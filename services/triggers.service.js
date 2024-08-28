@@ -1,6 +1,7 @@
 import { TRIGGER_ACTIONS, TRIGGER_TEXT_POSITIONS } from "../enums/triggers.js"
 import logger from "../lib/logger/logger.js"
 import { GET_MANY, GET_ONE, RUN } from "../lib/database/database.js"
+import { formatText } from "../utils/format-embed-from-text.js"
 
 const findAll = async () => {
 	const triggers = await GET_MANY({
@@ -82,7 +83,7 @@ const check = async (message) => {
 		break
 	case TRIGGER_ACTIONS.reply:
 		if (!reply) { return }
-		message.reply({ content: reply })
+		message.reply(formatText(reply))
 		break
 	}
 }
