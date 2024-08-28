@@ -1,3 +1,5 @@
+import getGuild from "../get-guild.js"
+
 const createChannel = async (
 	guild,
 	{
@@ -35,7 +37,10 @@ const deleteChannel = async (guild, channelId) => {
 	}
 	return guild.channels.delete(channelId)
 }
-const getChannel = async (guild, channelId) => guild.channels.cache.get(channelId)
+const getChannel = async (channelId) => {
+	const guild = getGuild()
+	return guild.channels.cache.get(channelId)
+}
 
 export {
 	createChannel,

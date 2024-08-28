@@ -20,7 +20,7 @@ const config = {
 	moderator_role_id: configJson.moderator_role_id
 }
 
-saveConfig(config)
+await saveConfig(config)
 
 export default config
 

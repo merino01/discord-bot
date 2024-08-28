@@ -46,6 +46,8 @@ export const BUTTON_LABELS = {
 		info: "LOGS_INFO_",
 		edit: "LOGS_EDIT_",
 		editEnable: "LOGS_EDIT_ENABLE_",
-		editChannel: "LOGS_EDIT_CHANNEL_"
+		editChannel: "LOGS_EDIT_CHANNEL_",
+		backToShowLogs: "LOGS_BACK_TO_SHOW_LOGS_",
+		backToLogInfo: "LOGS_BACK_TO_LOG_INFO_"
 	}
 }

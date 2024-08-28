@@ -40,16 +40,20 @@ export const getLogsSelect = () => new ActionRowBuilder()
 			.setPlaceholder("Selecciona el tipo de logs")
 			.addOptions([
 				{
-					label: "chatlog",
+					label: "Chat",
 					value: "chatlog"
 				},
 				{
-					label: "voicelog",
+					label: "Voz",
 					value: "voicelog"
 				},
 				{
-					label: "claneslog",
+					label: "Clanes",
 					value: "claneslog"
+				},
+				{
+					label: "Comandos",
+					value: "commandlog"
 				}
 			])
 	)

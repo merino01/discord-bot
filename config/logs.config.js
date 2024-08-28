@@ -18,6 +18,10 @@ const get = async () => {
 		claneslog: {
 			enabled: false,
 			channel: ""
+		},
+		commandlog: {
+			enabled: false,
+			channel: ""
 		}
 	}
 
