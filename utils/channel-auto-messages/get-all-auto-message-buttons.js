@@ -1,8 +1,8 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
-import ChannelAutoMessagesService from "../../services/auto-messages.service.js"
+import AutomaticMessagesService from "../../services/auto-messages.service.js"
 
 export default async function (idPrefix) {
-	const autoMsgs = await ChannelAutoMessagesService.findAll()
+	const autoMsgs = await AutomaticMessagesService.findAll()
 	if (!autoMsgs.length) {
 		return {
 			content: "❌ No hay mensajes automáticos registrados",

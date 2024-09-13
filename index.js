@@ -4,6 +4,7 @@ import EventHandler from "./lib/handlers/events.js"
 import CommandHandler from "./lib/handlers/commands.js"
 import { createTables } from "./lib/database/database.js"
 import sendMessageToAdmin from "./utils/send-message-to-admin.js"
+import api from "./lib/api/api.js"
 
 const { token } = config
 
@@ -22,6 +23,7 @@ await createTables()
 EventHandler.start(client)
 CommandHandler.start(client)
 CommandHandler.startSlashCommands(client)
+api.start(client)
 
 client.login(token)
 

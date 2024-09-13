@@ -40,14 +40,12 @@ const insertOne = async (data) => {
 	})
 }
 
-const deleteOneById = async (id) => {
-	await RUN({
-		query: "DELETE FROM channel_auto_messages WHERE id = ?",
-		params: [id]
-	})
-}
+const deleteOneById = async (id) => await RUN({
+	query: "DELETE FROM channel_auto_messages WHERE id = ?",
+	params: [id]
+})
 
-const ChannelAutoMessagesService = {
+const AutomaticMessagesService = {
 	findAll,
 	findOneById,
 	findOneByCategory,
@@ -55,4 +53,4 @@ const ChannelAutoMessagesService = {
 	deleteOneById
 }
 
-export default ChannelAutoMessagesService
+export default AutomaticMessagesService

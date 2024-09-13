@@ -1,4 +1,4 @@
-import ChannelAutoMessagesService from "../../services/auto-messages.service.js"
+import AutomaticMessagesService from "../../services/auto-messages.service.js"
 
 const autoMessages = new Map()
 
@@ -9,7 +9,7 @@ export async function setCreatingAutoMessage (id, data) {
 		data.categoryId
 	) {
 		try {
-			await ChannelAutoMessagesService.insertOne({ ...data, id })
+			await AutomaticMessagesService.insertOne({ ...data, id })
 		} finally {
 			autoMessages.delete(id)
 		}

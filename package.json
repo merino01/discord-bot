@@ -15,15 +15,17 @@
   },
   "dependencies": {
     "@discordjs/rest": "^2.3.0",
+    "cors": "^2.8.5",
     "discord-api-types": "^0.37.93",
     "discord.js": "^14.15.3",
+    "express": "^5.0.0",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@s-ui/mono": "^2.45.0",
     "eslint": "^9.8.0",
     "globals": "^15.9.0",
-    "@s-ui/mono": "^2.45.0",
     "husky": "^9.1.5"
   },
   "engines": {
