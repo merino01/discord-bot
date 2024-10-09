@@ -8,6 +8,7 @@
   "license": "ISC",
   "scripts": {
     "start": "node index.js",
+		"dev": "node --watch index.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "commit": "sui-mono commit",
@@ -15,10 +16,8 @@
   },
   "dependencies": {
     "@discordjs/rest": "^2.3.0",
-    "cors": "^2.8.5",
     "discord-api-types": "^0.37.93",
     "discord.js": "^14.15.3",
-    "express": "^5.0.0",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {

@@ -1,8 +1,8 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
-import MessageFormatsService from "../../services/message-formats.service.js"
+import MessagesFormatService from "../../services/messages-format.service.js"
 
 export default async function (idPrefix) {
-	const formats = await MessageFormatsService.findAll()
+	const formats = await MessagesFormatService.get()
 	if (!formats.length) {
 		return {
 			content: "❌ No hay formatos registrados",

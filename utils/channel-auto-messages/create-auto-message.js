@@ -9,7 +9,7 @@ export async function setCreatingAutoMessage (id, data) {
 		data.categoryId
 	) {
 		try {
-			await AutomaticMessagesService.insertOne({ ...data, id })
+			await AutomaticMessagesService.createOne({ ...data })
 		} finally {
 			autoMessages.delete(id)
 		}
