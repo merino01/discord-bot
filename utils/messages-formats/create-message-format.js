@@ -1,5 +1,5 @@
 import logger from "../../lib/logger/logger.js"
-import MessageFormatsService from "../../services/message-formats.service.js"
+import MessagesFormatService from "../../services/messages-format.service.js"
 
 const messageFormats = new Map()
 
@@ -11,7 +11,7 @@ export async function setCreatingMessageFormat (id, data) {
 		data.regex
 	) {
 		try {
-			await MessageFormatsService.insertOne({ ...data, id })
+			await MessagesFormatService.createOne(data)
 			messageFormats.delete(id)
 		} catch (error) {
 			logger.error(error)
