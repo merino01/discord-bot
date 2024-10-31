@@ -1,61 +1,28 @@
 import { TRIGGER_ACTIONS, TRIGGER_TEXT_POSITIONS } from "../enums/triggers.js"
 import logger from "../lib/logger/logger.js"
-import { GET_MANY, GET_ONE, RUN } from "../lib/database/database.js"
 import { formatText } from "../utils/format-message-from-text.js"
+import api from "../lib/api.js"
 
-const findAll = async () => {
-	const triggers = await GET_MANY({
-		query: "SELECT * FROM triggers"
-	})
-	return triggers.length
-		? triggers
-		: null
-}
+const url = "triggers/"
 
-const findOneById = async (id) => {
-	const trigger = await GET_ONE({
-		query: `
-			SELECT * FROM triggers WHERE id = ?
-		`,
-		params: [id]
-	})
-	return trigger
-}
+const get = async () => api.GET(url)
+const getOneById = async (id) => api.GET(url + id)
 
-const findOneByName = async (name) => {
-	const trigger = await GET_ONE({
-		query: "SELECT * FROM triggers WHERE name LIKE ?",
-		params: [`%${name}%`]
-	})
-	return trigger
-}
-
-const insertOne = async (newTrigger) => {
+const createOne = async (newTrigger) => {
 	const { id, name, description, key, sensible, action, reply, position } = newTrigger
-	await RUN({
-		query: `
-      INSERT INTO triggers (
-				id,
-				name,
-				description,
-				key,
-				case_sensitive,
-				action,
-				reply,
-				text_position
-			)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `,
-		params: [id, name, description, key, sensible, action, reply, position]
+	return await api.POST(url, {
+		id,
+		name,
+		description,
+		key,
+		case_sensitive: sensible === "true",
+		action,
+		reply,
+		text_position: position
 	})
 }
 
-const deleteOneById = async (triggerId) => {
-	await RUN({
-		query: "DELETE FROM triggers WHERE id = ?",
-		params: [triggerId]
-	})
-}
+const deleteOneById = async (triggerId) => api.DELETE(url + triggerId)
 
 const check = async (message) => {
 	const trigger = await findTrigger(message.content)
@@ -89,7 +56,7 @@ const check = async (message) => {
 }
 
 async function findTrigger (content) {
-	const triggers = await findAll()
+	const triggers = await get()
 	if (!triggers) { return null }
 	const foundTrigger = triggers.find((_trigger) => {
 		const { key, case_sensitive, text_position } = _trigger
@@ -129,10 +96,9 @@ async function findTrigger (content) {
 }
 
 const TriggersService = {
-	findAll,
-	findOneById,
-	findOneByName,
-	insertOne,
+	get,
+	getOneById,
+	createOne,
 	deleteOneById,
 	check
 }

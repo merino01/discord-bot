@@ -2,7 +2,7 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
 import TriggersService from "../../services/triggers.service.js"
 
 export const getTriggersButtons = async (prefix) => {
-	const triggers = await TriggersService.findAll()
+	const triggers = await TriggersService.get()
 	if (!triggers) {
 		return {
 			content: "❌ No hay triggers registrados",

@@ -13,7 +13,7 @@ export async function setCreatingTrigger (id, data) {
 		data.position
 	) {
 		try {
-			await TriggersService.insertOne({ ...data, id })
+			await TriggersService.createOne({ ...data, id })
 			triggers.delete(id)
 		} catch (error) {
 			logger.error(error)
