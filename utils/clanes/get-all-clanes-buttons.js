@@ -12,10 +12,19 @@ export default async function (idPrefix) {
 
 	const buttons = []
 	for (const clan of clanes) {
+		const clanMembersCount = getMembersCount({ clan })
+		let buttonStyle = ButtonStyle.Primary
+
+		if (clanMembersCount > 19 && clanMembersCount < 30) {
+			buttonStyle = ButtonStyle.Secondary
+		} else if (clanMembersCount >= 30) {
+			buttonStyle = ButtonStyle.Danger
+		}
+
 		buttons.push(new ButtonBuilder()
 			.setCustomId(`${idPrefix}${clan.id}`)
-			.setLabel(`${clan.name} (${getMembersCount({ clan })})`)
-			.setStyle(ButtonStyle.Primary)
+			.setLabel(`${clan.name} (${clanMembersCount})`)
+			.setStyle(buttonStyle)
 		)
 	}
 
